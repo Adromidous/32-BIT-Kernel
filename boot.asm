@@ -1,30 +1,31 @@
     [org 0x7c00]
 
+    ; CHANGING COLORS________________________________
+    
     mov ah, 0x0b ; Color palette
     mov bh, 0x00 ; Change color
-    mov bl, 0x01
-    int 0x10 
+    mov bl, 0x01 ; Changes color to blue
+    int 0x10
+
+    ; _______________________________________________
+
+
+    ; PRINTING STRING________________________________
 
     mov ah, 0x0e ; Interrupt setup
     mov bx, stringPrint
 
-    jmp start
+    call print_string
 
-start:
-    mov al, [bx] ; Move character to AL
-    cmp al, 0 ; Check if null character
+    jmp exit_boot
 
-    je exitBoot ; If null, jump to exit
+    ;________________________________________________
 
-    int 0x10 ; Print character
-    add bx, 1 ; Increment string pointer
-
-    jmp start ; Jump back to start
-
+    %include "print_string.asm"
 
 stringPrint: db "HELLO WORLD!", 0
 
-exitBoot:
+exit_boot:
     jmp $
 
 times 510-($-$$) db 0
