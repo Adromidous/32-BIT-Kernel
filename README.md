@@ -23,3 +23,6 @@ Features that I'm currently building:
 
 
 Some pictures I've included to keep track of my progress:  
+![QEMU_bootloader](https://github.com/Adromidous/32-BIT-Kernel/assets/110305385/b255633d-6fb6-4f31-9b62-e9ac9ae77cd1)  
+Command: qemu-system-x86_64 -boot a -fda ./build/tkos.bin  
+This command was to run the binary floppy disk file on QEMU to make sure the bootloader was booting the kernel sector.  
